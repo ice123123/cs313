@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title>in class stuff</title>
+		<script type="text/Javascript">
+		function addText()
+		{
+			var newText = document.getElementById('userInput').value;
+			
+			
+			
+			document.getElementById('userView').style.color = newText;
+		
+		
+		
+		}
+		
+		function hideText()
+		{
+			document.getElementById('userView').style.visibility="hidden";
+		
+		}
+
+		function showText()
+		{
+			document.getElementById('userView').style.visibility="visible";
+		
+		}
+		
+		</script>
+	</head>
+	<body>
+	
+		<div id="userView">Test</div>
+		<input type="text" id="userInput" name="userInput" />
+		<br />
+		
+		<button type="button" onclick="addText()">add text </button>
+		<button type="button" onclick="hideText()">hide text </button>
+		<button type="button" onclick="showText()">show text </button>
+	</body>
+</html>
