@@ -2,30 +2,31 @@
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
-		<style type ="text/css">
-			body {background-color:lightblue}
-		</style>
+		<link rel="stylesheet" type="text/css" href="index.css">
 		
 		<title>Justin Hurley's home page</title>
 	</head>
 
 	<body> 
-		<h1 style = "font-family:cursive ; color:green; font; font-size:2.5em" >Welcome to Justin Hurley's home page </h1>	
+		<h1>Welcome to Justin Hurley's home page </h1>	
 	
-		<img src = "justin.jpg" height = "200" width = "200" />
-		
-		<p style = "font-family:serif">My name is Justin Hurley, <br />
+		<img class="center" src = "justin2.jpg" height = "200" width = "300" id="center" onmouseover="this.src='justin.jpg'" onmouseout="this.src='justin2.jpg'" /></a>
+		<p class="center">My name is Justin Hurley, <br />
 			I'm from Vancouver Washington. <br />
-			I'm currently studying computer science at BYU-I.</p>
+			I'm currently studying Computer Science at BYU-I. <br />
+			My planned Graduation date is December 2015.
+		</p>
 			
 		<br />
 		
-		<p>One of my favorite verses is:</p>
+		<p class="center">Favorite verse:</p>
 		<blockquote>
-			<p style = "font-family:sans-serif; color:red">"He that is without sin among you, let him first cast a stone at her" John 8:7 </p>
+			<p class="quote">"He that is without sin among you, let him first cast a stone at her" John 8:7 </p>
 		</blockquote>
 		
-		<table border = "1">
+		
+		
+		<table class="center" border = "1">
 			<caption>Class Schedule</caption>
 			<tr>
 				<th>Course</th>
@@ -66,6 +67,6 @@
 		</table>
 		
 		<br />
-		<a href = "assign02.html" ><b> CS 213 Assignments </b></a>
+		<p class="center"><a href = "assignmentList.html" ><b>CS313 Assignment List </b></a></p>
 	</body>
 </html>

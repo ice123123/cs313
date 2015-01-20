@@ -1,0 +1,40 @@
+html{
+	background-color:blue;
+	}
+	
+body {
+	background-color:lightblue; 
+	border:2px solid black;
+	border-radius:25px;
+	margin-top:0px;
+	margin-bottom:100px;
+	border-color: navy;
+	font-size: 16px;
+	}
+	
+p.center{
+	text-align:center;
+	}
+
+img.center{
+	display: block;
+   margin-left: auto;
+   margin-right: auto;
+	}
+
+table.center{
+   margin-left: auto;
+   margin-right: auto;
+	}
+
+h1 {
+	color:#000066; 
+	font; font-size:2.5em; 
+	text-align:center
+	}
+	
+p.quote {
+	font-family:sans-serif; 
+	color:red;
+	text-align:center;
+	}
