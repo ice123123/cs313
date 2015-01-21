@@ -15,10 +15,10 @@
 	
 	//foreach($lines as $line_num => $line)
 	//{
-		$text = "read test";
+		/*$text = "read test";
 		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
 		fwrite($myfile, $text);
-		fclose($myfile);
+		fclose($myfile);*/
 		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
 		echo fread($myfile, filesize($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt"));
 		fclose($myfile);
