@@ -7,7 +7,8 @@
 		<title>Justin Hurley's home page</title>
 	</head>
 
-	<body> 
+	<body>
+	<?php echo "test"; ?>
 <?php
 
 	//$lines = file('data.txt');
