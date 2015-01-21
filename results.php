@@ -16,11 +16,11 @@
 	//foreach($lines as $line_num => $line)
 	//{
 		$text = "read test";
-		$myfile = fopen("/OPENSHIFT_DATA_DIR/survey_data.txt", "w");
+		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
 		fwrite($myfile, $text);
 		fclose($myfile);
-		$myfile = fopen("/OPENSHIFT_DATA_DIR/survey_data.txt", "w");
-		echo fread($myfile, filesize("/OPENSHIFT_DATA_DIR/survey_data.txt"));
+		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
+		echo fread($myfile, filesize($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt"));
 		fclose($myfile);
 	//}
 ?>
