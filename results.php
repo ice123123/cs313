@@ -13,7 +13,7 @@
 	
 	foreach($lines as $line_num => $line)
 	{
-		echo "$line\n";
+		echo "$line";
 	}
 ?>
 	</body>
