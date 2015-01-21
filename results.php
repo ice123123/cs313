@@ -20,11 +20,11 @@
 		fwrite($myfile, $text);
 		fclose($myfile);*/
 		$Helfrich = $_POST["Helfrich"];
-			
-		echo "{$Helfrich[0]}\n";
 		
-		
-		
+		foreach($Helfrich as $item => $value)
+		{
+			echo "$item $value\n";
+		}
 		
 		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
 		echo fread($myfile, filesize($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt"));
