@@ -21,6 +21,8 @@
 		fclose($myfile);*/
 		$Helfrich = $_POST["Helfrich"];
 		
+		echo $Helfrich['0'];
+		
 		foreach($Helfrich as $item => $value)
 		{
 			echo "$item $value\n";
