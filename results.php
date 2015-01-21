@@ -21,7 +21,7 @@
 		fclose($myfile);*/
 		$Helfrich = $_POST["Helfrich"];
 			
-		echo "$Helfrich\n";
+		echo "{$Helfrich[0]}\n";
 		
 		
 		
