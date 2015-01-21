@@ -23,7 +23,7 @@
 		
 		foreach($Helfrich as $item => $value)
 		{
-			echo $value;
+			echo "$item $value\n";
 		
 		
 		}
