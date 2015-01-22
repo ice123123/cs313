@@ -14,13 +14,13 @@
 			private $num_votes;
 			private $average;
 	
-			function __construct($raw_data);
+			function __construct($raw_data)
 			{
 				if (strlen($raw_data) > 0)
 				{
 					$data = explode($raw_data, " ");
 					$this->average = $data[0];
-					$this->num_votes = data[1];
+					$this->num_votes = $data[1];
 				}
 				else
 				{
@@ -33,7 +33,7 @@
 		}
 	
 		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
-		//$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
+		$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
 		
 		/*if(count($lines) >= 5)
 		{
