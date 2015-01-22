@@ -53,7 +53,7 @@
 		}*/
 		
 
-			$user_burton = $_POST["Burton"];
+			/*$user_burton = $_POST["Burton"];
 			$user_neff = $_POST["Neff"];
 			$user_twitchell = $_POST["Twitchell"];
 			$user_helfrich = $_POST["Helfrich"];
@@ -63,7 +63,7 @@
 
 			$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
 			echo fread($myfile, filesize($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt"));
-			fclose($myfile);
+			fclose($myfile);*/
 		
 	?>
 	</body>
