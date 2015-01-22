@@ -32,8 +32,8 @@
 		
 		}*/
 	
-		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
-		$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
+		//$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
+		//$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
 		
 		/*if(count($lines) >= 5)
 		{
