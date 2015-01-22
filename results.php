@@ -35,7 +35,7 @@
 		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
 		$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
 		
-		if(count($lines) >= 5)
+		/*if(count($lines) >= 5)
 		{
 			$burton = new Professor($lines[0]);
 			$neff = new Professor($lines[0]);
@@ -50,7 +50,7 @@
 			$twitchell = new Professor();
 			$helfrich = new Professor();
 			$ercanbrack = new Professor();
-		}
+		}*/
 		
 
 			$user_burton = $_POST["Burton"];
