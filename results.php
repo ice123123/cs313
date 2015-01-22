@@ -10,7 +10,7 @@
 	<body>
 	<?php echo "test"; ?>
 	<?php
-		/*class Professor {
+		class Professor {
 			private $num_votes;
 			private $average;
 	
@@ -30,9 +30,9 @@
 			}
 			
 		
-		}*/
+		}
 	
-		//$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
+		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
 		//$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
 		
 		/*if(count($lines) >= 5)
