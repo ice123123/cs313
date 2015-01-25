@@ -33,7 +33,7 @@
 			return $this->average . " " . $this->numVotes;
 		}
 	}
-	$fileName = "survey_data.txt";
+	$fileName = $_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt";
 		
 	if(file_exists($fileName)) {
 		$newfile = fopen($fileName, "r") or die("Unable to open file");
