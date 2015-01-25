@@ -1,70 +1,94 @@
+<?php
+	session_start();
+	
+	class Professor {
+		private $numVotes;
+		private $average;
+		private $name;
+	
+		function __construct($name, $average, $numVotes) {
+			$this->average = $average;
+			$this->numVotes = $numVotes;
+			$this->name = $name;
+		}
+		
+		public function add($rating) {
+			$this->average = (($this->numVotes * $this->average) + $rating)/($this->numVotes + 1);
+			$this->numVotes += 1;
+		}
+			
+		public function getName() {
+			return $this->name;
+		}
+			
+		public function getAverage() {
+			return $this->average;
+		}
+			
+		public function getNumVotes() {
+			return $this->numVotes;
+		}		
+		
+		public function getData() {
+			return $this->average . " " . $this->numVotes;
+		}
+	}
+	$fileName = "survey_data.txt";
+		
+	if(file_exists($fileName)) {
+		$newfile = fopen($fileName, "r") or die("Unable to open file");
+		$data = explode(" ", fread($newfile, filesize($fileName)));
+		fclose($newfile);
+		
+		$professors = array(new Professor("Burton", $data[0], $data[1]), new Professor("Neff", $data[2], $data[3]), new Professor("Twitchell", $data[4], $data[5]), new Professor("Helfrich", $data[6], $data[7]), new Professor("Ercanbrack", $data[8], $data[9]));
+	}
+	else {
+		$professors = array(new Professor("Burton", 0, 0), new Professor("Neff", 0, 0), new Professor("Twitchell", 0, 0), new Professor("Helfrich", 0, 0), new Professor("Ercanbrack", 0, 0));
+	}
+		
+	$file = fopen($fileName, 'w');
+		
+	if(!isset($_SESSION["hasVoted"]))
+		foreach($professors as $professor) {
+			if(isset($_POST[($professor->getName())]))
+			{
+				$professor->add($_POST[($professor->getName())]);	
+				$_SESSION["hasVoted"] = "voted";
+			}
+		}	
+
+	foreach($professors as $professor)
+		fwrite($file, $professor->getData() . " ");
+?>
 <!DOCTYPE HTML>
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" type="text/css" href="survey.css">
 		
 		<title>results</title>
 	</head>
 
 	<body>
-	<?php echo "test"; ?>
-	<?php
-		class Professor {
-			private $num_votes;
-			private $average;
-	
-			function __construct($raw_data)
-			{
-				if (strlen($raw_data) > 0)
+		<h1><p>Results</p></h1>
+		<table class="center">
+			<tr>
+				<td>Professor</td>
+				<td>Average</td>
+				<td>Number of votes</td>
+			</tr>
+			<?php
+				foreach($professors as $professor)
 				{
-					$data = explode($raw_data, " ");
-					$this->average = $data[0];
-					$this->num_votes = $data[1];
-				}
-				else
-				{
-					$this->average = 0;
-					$this->num_votes = 0;
-				}
-			}
-			
+					echo "<tr>\n";
+					echo "<td>" . $professor->getName() . "</td>\n";
+					echo "<td>" . $professor->getAverage() . "</td>\n";
+					echo "<td>" . $professor->getNumVotes() . "</td>\n";
+					echo "</tr>\n";
+				} 
+			?>
+		</table>
+	<br />
 		
-		}
-	
-		$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w")
-		//$lines = file($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt");
-		
-		/*if(count($lines) >= 5)
-		{
-			$burton = new Professor($lines[0]);
-			$neff = new Professor($lines[0]);
-			$twitchell = new Professor($lines[0]);
-			$helfrich = new Professor($lines[0]);
-			$ercanbrack = new Professor($lines[0]);
-		}
-		else
-		{
-			$burton = new Professor();
-			$neff = new Professor();
-			$twitchell = new Professor();
-			$helfrich = new Professor();
-			$ercanbrack = new Professor();
-		}*/
-		
-
-			/*$user_burton = $_POST["Burton"];
-			$user_neff = $_POST["Neff"];
-			$user_twitchell = $_POST["Twitchell"];
-			$user_helfrich = $_POST["Helfrich"];
-			$user_ercanbrack = $_POST["Ercanbrack"];
-			
-			echo $Helfrich['0'];
-
-			$myfile = fopen($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt", "w");
-			echo fread($myfile, filesize($_ENV["OPENSHIFT_DATA_DIR"] . "survey_data.txt"));
-			fclose($myfile);*/
-		
-	?>
 	</body>
 </html>
