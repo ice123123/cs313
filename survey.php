@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	if(isset($_SESSION["hasVoted"]))
 	{
 		header("Location: https://php-jhurley3.rhcloud.com/results.php");
