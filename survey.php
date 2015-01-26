@@ -22,7 +22,7 @@
 		<h1><p>Rate Your Professors</p></h1>
 		
 		<form method="POST" action="results.php">
-			<img class="center" src = "burtons.jpg" height = "75" width = "75">
+			<img class="center" src = "burtons.jpg" height = "75" width = "80">
 			<p class="center"><b>Brother Burton:</b></p>	
 			<table class="center">
 				<tr>
@@ -57,7 +57,7 @@
 
 			<br />
 			<br />
-			<img class="center" src = "neffr.jpg" height = "75" width = "75">
+			<img class="center" src = "neffr.jpg" height = "75" width = "80">
 			<p class="center"><b>Brother Neff:</b></p>
 			<table class="center">
 				<tr>
@@ -92,7 +92,7 @@
 			
 			<br />
 			<br />
-			<img class="center" src = "twitchellk.jpg" height = "75" width = "75">
+			<img class="center" src = "twitchellk.jpg" height = "75" width = "80">
 			<p class="center"><b>Brother Twitchell:</b></p>
 			<table  class="center">
 				<tr>
@@ -127,7 +127,7 @@
 			
 			<br />
 			<br />
-			<img class="center" src = "helfrichj.jpg" height = "75" width = "75">
+			<img class="center" src = "helfrichj.jpg" height = "75" width = "80">
 			<p class="center"><b>Brother Helfrich:</b></p>
 			<table  class="center">
 				<tr>
@@ -162,7 +162,7 @@
 			
 			<br />
 			<br />
-			<img class="center" src = "ercanbracks.jpg" height = "75" width = "75">
+			<img class="center" src = "ercanbracks.jpg" height = "75" width = "80">
 			<p class="center"><b>Brother Ercanbrack:</b></p>
 			<table  class="center">
 				<tr>
