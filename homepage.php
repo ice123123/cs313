@@ -31,8 +31,15 @@
 		$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 	}
 	
-	$db = new PDO("mysql:host=$dbHost:$dbPort;$dbname=$dbName", $dbUser, $dbPassword);
-	
+	try
+	{
+		$db = new PDO("mysql:host=$dbHost:$dbPort;$dbname=$dbName", $dbUser, $dbPassword);
+	}
+	catch (PDOException $ex) 
+	{
+		echo "Error!: " . $ex->getMessage();
+		die(); 
+	}
 	
 ?>	
 	
