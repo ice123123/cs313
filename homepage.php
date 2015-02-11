@@ -33,7 +33,7 @@
 	
 	try
 	{
-		$db = new PDO("mysql:host=$dbHost;$dbPort;$dbname=$dbName", $dbUser, $dbPassword);
+		$db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 	}
 	catch (PDOException $ex) 
 	{
