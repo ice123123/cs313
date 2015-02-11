@@ -40,7 +40,7 @@
 		echo "Error!: " . $ex->getMessage();
 		die(); 
 	}
-	echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
+	//echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
 ?>	
 <!DOCTYPE HTML>
 <html lang="en-us">
@@ -59,7 +59,7 @@
 		<h1> Hurley's Game Shop</h1>
 		<p>Featured Items: </p>
 		<?php
-			foreach ($db->query("SELECT name, picture, price FROM game WHERE featured='1';") as $row)
+			foreach ($db->query("SELECT name, picture, price FROM game;") as $row)
 			{
 			  echo "<table style='float:left'> <tr><td>" . substr($row['name'], 0, 26) . "</td></tr>";
 			  echo "<tr><td class='center'><img src='" . $row['picture'] . "'> </td></tr>";
