@@ -1,0 +1,57 @@
+html{
+	background-color:blue;
+	background-image:url("halo5.jpg");
+	}
+	
+body {
+	background-color:#F8F8F8; 
+	border:2px solid black;
+	border-radius:15px;
+	margin-top:5px;
+	margin-bottom:5%;
+	border-color: black;
+	font-size: 16px;
+	margin-left:5%;
+	margin-right:5%;
+	}
+	
+p.center{
+	text-align:center;
+	}
+
+img.center{
+	display: block;
+   margin-left: auto;
+   margin-right: auto;
+	}
+
+table.center{
+   margin-left: auto;
+   margin-right: auto;
+	}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+td {
+   text-align:center;
+}
+
+table {
+	display: inline-block;
+	float: left;
+	font-size: 12px;
+	margin-left: 5px;
+   margin-right: 5px;
+}
+
+img {
+	width: 152px;
+	height: 196px;
+}
+
