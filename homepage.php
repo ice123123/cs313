@@ -40,11 +40,8 @@
 		echo "Error!: " . $ex->getMessage();
 		die(); 
 	}
-	
+	echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
 ?>	
-	
-
-
 <!DOCTYPE HTML>
 <html lang="en-us">
 	<head>
@@ -58,11 +55,6 @@
 			<form method="POST" action="searchResults.php">
 			<input type="text" name="search"><button type="search" name="login">Search</button>
 			<span class="alignright"><a href="login.php">login</a> cart</span></form>
-		
-		
-		
-		
-		
 		
 		<h1> Hurley's Game Shop</h1>
 		<p>Featured Items: </p>
