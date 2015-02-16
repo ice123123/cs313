@@ -1,6 +1,6 @@
 <?php
 	session_start();
-
+	
 	$dbHost = "";
 	$dbPort = "";
 	$dbUser = "queryOnly";
@@ -30,17 +30,14 @@
 		echo "Error!: " . $ex->getMessage();
 		die(); 
 	}
-?>	
-	
-
-
+?>
 <!DOCTYPE HTML>
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="game.css">
 		
-		<title>Games</title>
+		<title>Advance Search</title>
 	</head>
 
 	<body>
@@ -62,22 +59,55 @@
 				<button class="shift" type="button" onclick="location.href='homepage.php'">Cart</button>
 				</span>		
 		</form>
-		
-		
-		
-		<h1> Hurley's Game Shop</h1>
-		<p class="featured">Featured Items: </p>
-		<?php
-			foreach ($db->query("SELECT name, id, picture, price FROM game WHERE featured='1';") as $row)
-			{
-			  echo "<table class='home'> <tr><td>" . substr($row['name'], 0, 21) . "</td></tr>";
-			  echo "<tr><td class='center'><img src='" . $row['picture'] . "'> </td></tr>";
-			  echo "<tr><td>Price: $" . $row['price'] . "<button class='shift' type='button' value='" . $row['id'] . "'>Add</button></td></tr></table>";
-			}
-
-			echo "<br />";
-		?>
-		
-	 <p style="clear: both"></p>
+		<h1>Advance Search</h1>
+		<br />
+		<form method="POST" action="searchResults.php">
+			<table class='login'>
+				<tr>
+					<td class="right">Key Word:</td>
+					<td class="left"><input type="text" name="keyWord" id="keyWord" /></td>
+				</tr>
+				<tr>
+					<td class="right">Rating:</td>
+					<td class="left"> 
+						<select name='rating'>
+							<option  value=''></option>
+						<?php
+							$query = $db->prepare("SELECT rating from game group by rating;");
+							$query->execute();
+							
+							while ($row = $query->fetch(PDO::FETCH_ASSOC))
+							{
+								echo "<option value='" . $row['rating'] . "'>" . $row['rating'] . "</option>";	
+							}
+						?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="right">Console:</td>
+					<td class="left">
+						<select name='console'>
+							<option value=''></option>
+							<?php
+								$query = $db->prepare("SELECT name from console;");
+								$query->execute();
+								
+								while ($row = $query->fetch(PDO::FETCH_ASSOC))
+								{
+									echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";	
+								}
+							?>
+						</select>
+					<td>
+				</tr>
+				<tr>
+					<td>
+					<td class="left"><button type="submit"> Search </button>
+				</tr>
+			</table>
+		</form>
+			
 	</body>
+	
 </html>

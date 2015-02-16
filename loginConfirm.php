@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	$dbHost = "";
 	$dbPort = "";
 	$dbUser = "queryOnly";
@@ -28,10 +30,14 @@
 		echo "Error!: " . $ex->getMessage();
 		die(); 
 	}
-	//echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
 	
-	$results = $db->query("SELECT username FROM user WHERE username='" . $_POST["username"] . "' AND password='" .  $_POST["password"] . "';");
 	
+	
+	$results = $db->prepare("SELECT username FROM user WHERE username=:username AND password=:password;");
+	$results->bindParam(':username', $_POST["username"]);
+	$results->bindParam(':password', $_POST["password"]);
+	
+	$results->execute();
 	$numRows = $results->rowCount();	
 ?>
 
@@ -55,7 +61,10 @@
 			if($numRows == 0) 
 				echo '<p> Login failed. Redirecting to login page</p>'; 
 			else 
+			{
 				echo '<p> Login Successful </p>'; 
+				$_SESSION['username'] = $_POST['username'];
+			}
 		?>
 	</body>
 </html>
