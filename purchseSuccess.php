@@ -44,6 +44,7 @@
 							   WHERE c.id=:cart');
 		$delete->bindValue(':cart', $_SESSION['cart'], PDO::PARAM_INT);	
 		$delete->execute();
+		unset($_SESSION['cart']);
 	}
 ?>	
 	
