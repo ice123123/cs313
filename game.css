@@ -24,16 +24,24 @@ p.perror{
 	color:red;
 }
 
+p.purchase{
+	text-align:center;
+	font-size: 28px;
+}
+.center{
+	text-align:center;
+}
 img.center{
 	display: block;
    margin-left: auto;
    margin-right: auto;
 	}
+	
+table.cart {
 
-table.center{
-   margin-left: auto;
-   margin-right: auto;
-	}
+   font-size: 24px;
+   margin: 0px auto;
+}
 
 .alignleft {
 	float: left;
@@ -70,9 +78,14 @@ table.login {
    margin: 0px auto;
 }
 
-img {
+img{
 	width: 152px;
 	height: 196px;
+}
+
+img.cart {
+	width: 76px;
+	height: 98px;
 }
 
 h1 {
@@ -90,4 +103,26 @@ p.featured {
 	color:#FF6600;
 	font-style: italic;
 	font-weight: bold;
+}
+
+button.purchase{
+	width: 10em;  
+	height: 2.7em;
+	
+}
+
+td.qty {
+	width:80px;
+}
+
+td.price {
+	width:80px;
+}
+
+td.name {
+	width:500px;
+}
+
+td.remove {
+	width: 80px;
 }

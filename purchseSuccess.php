@@ -1,13 +1,46 @@
-<!DOCTYPE HTML>
 <?php
 	session_start();
-?>
+
+	$dbHost = "";
+	$dbPort = "";
+	$dbUser = "deleteAccount";
+	$dbPassword = "delete";
+	$dbName = "game_store";
+	
+	$openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
+	
+	if ($openShiftVar === null || $openShiftVar == "")
+	{
+		require("setLocalDatabaseCrentials.php");
+	}
+	else
+	{
+		$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+		$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+		//$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+		//$dbPassword = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+	}
+	
+	try
+	{
+		$db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+	}
+	catch (PDOException $ex) 
+	{
+		echo "Error!: " . $ex->getMessage();
+		die(); 
+	}
+?>	
+	
+
+
+<!DOCTYPE HTML>
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="game.css">
 		
-		<title>login</title>
+		<title>Games</title>
 	</head>
 
 	<body>
@@ -16,6 +49,7 @@
 			<input class="shift" type="text" name="search"><button type="submit">Search</button>
 			<button type="button" onclick="location.href='advancedSearch.php'">Advanced Search</button>
 			<span class="alignright">
+			
 				<?php
 					if(isset($_SESSION['username']) && $_SESSION['username'] != "")
 					{
@@ -28,27 +62,8 @@
 				<button class="shift" type="button" onclick="location.href='cart.php'">Cart</button>
 				</span>		
 		</form>
-		
-		<h1>Login</h1>
-		<form method="POST" action="loginConfirm.php">
-			<table class="login">
-				<tr>
-					<td  class="right">User Name:</td>
-					<td><input type="text" name="username" /></td>
-				</tr>
-				<tr>
-					<td  class="right">Password:</td>
-					<td><input type="password" name="password" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<button type="submit" name="login">Login </button>
-						<button type="button" onclick="location.href='newUser.php'">Create Account</button>
-					</td>
-			</table>
-		</form>
-	
-	<br />
+			
+		<p class='center'>Your purchase was successful!</p>
+					
 	</body>
 </html>

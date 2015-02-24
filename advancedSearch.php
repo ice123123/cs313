@@ -42,8 +42,8 @@
 
 	<body>
 		<br />
-		<form method="POST" action="searchResults.php">
-			<input class="shift" type="text" name="search"><button type="search" name="login">Search</button>
+		<form method="GET" action="searchResults.php">
+			<input class="shift" type="text" name="search"><button type="submit">Search</button>
 			<button type="button" onclick="location.href='advancedSearch.php'">Advanced Search</button>
 			<span class="alignright">
 			
@@ -56,12 +56,12 @@
 					else
 						echo "<button class=\"shift\" type=\"button\" onclick=\"location.href='login.php'\">Login</button>";
 				?>
-				<button class="shift" type="button" onclick="location.href='homepage.php'">Cart</button>
+				<button class="shift" type="button" onclick="location.href='cart.php'">Cart</button>
 				</span>		
 		</form>
 		<h1>Advance Search</h1>
 		<br />
-		<form method="POST" action="searchResults.php">
+		<form method="GET" action="searchResults.php">
 			<table class='login'>
 				<tr>
 					<td class="right">Key Word:</td>

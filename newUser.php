@@ -1,4 +1,6 @@
 <?php
+	require 'password.php';
+
 	session_start();
 	
 	$errorFlag = false;
@@ -8,18 +10,21 @@
 	{
 		$errorFlag = false;
 		
+		$confirmPassword = $_POST["confirmPassword"];
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		$first_name = $_POST["firstName"];
 		$last_name = $_POST["lastName"];
 		$age = $_POST["age"];
 		
+		$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+		
 		$dbHost = "";
 		$dbPort = "";
 		$dbUser = "queryInsertOnly";
 		$dbPassword = "insert";
 		$dbName = "game_store";
-		
+	
 		$openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 		
 		if ($openShiftVar === null || $openShiftVar == "")
@@ -54,7 +59,7 @@
 		{
 			$statement = $db->prepare("INSERT INTO user (username, password, first_name, last_name, age) VALUES (:username, :password, :first_name, :last_name, :age)");
 			$statement->bindParam(':username', $username);
-			$statement->bindParam(':password', $password);
+			$statement->bindParam(':password', $passwordHash);
 			$statement->bindParam(':first_name', $first_name);
 			$statement->bindParam(':last_name', $last_name);
 			$statement->bindParam(':age', $age);
@@ -90,6 +95,18 @@
 					return false;
 				}
 				
+				if(document.getElementById("confirmPassword").value == "")
+				{
+					window.alert("Please enter a Password");
+					return false;
+				}
+				
+				if(document.getElementById("confirmPassword").value != document.getElementById("password").value)
+				{
+					window.alert("Your passwords do not match");
+					return false;
+				}
+				
 				if(document.getElementById("firstName").value == "")
 				{
 					window.alert("Please enter a First Name");
@@ -120,8 +137,8 @@
 
 	<body>
 		<br />
-		<form method="POST" action="searchResults.php">
-			<input class="shift" type="text" name="search"><button type="search" name="login">Search</button>
+		<form method="GET" action="searchResults.php">
+			<input class="shift" type="text" name="search"><button type="submit">Search</button>
 			<button type="button" onclick="location.href='advancedSearch.php'">Advanced Search</button>
 			<span class="alignright">
 			
@@ -134,7 +151,7 @@
 					else
 						echo "<button class=\"shift\" type=\"button\" onclick=\"location.href='login.php'\">Login</button>";
 				?>
-				<button class="shift" type="button" onclick="location.href='homepage.php'">Cart</button>
+				<button class="shift" type="button" onclick="location.href='cart.php'">Cart</button>
 				</span>		
 		</form>
 		<h1>Account Creation</h1>
@@ -149,7 +166,11 @@
 					<td><input type="password" name="password" id="password"<?php if($errorFlag == true) echo "value='" . $_POST["password"]. "'"; ?>/></td>
 				</tr>
 				<tr>
-					<td>First Name:</td>
+					<td class="right">Confirm Password: </td>
+					<td><input type="password" name="confirmPassword" id="confirmPassword"<?php if($errorFlag == true) echo "value='" . $_POST["confirmPassword"]. "'"; ?>/></td>
+				</tr>
+				<tr>
+					<td class="right">First Name:</td>
 					<td><input type="text" name="firstName" id="firstName" <?php if($errorFlag == true) echo "value='" . $_POST["firstName"]. "'"; ?>/></td>
 				</tr>
 				<tr>
