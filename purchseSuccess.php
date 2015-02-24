@@ -30,6 +30,21 @@
 		echo "Error!: " . $ex->getMessage();
 		die(); 
 	}
+	
+	if(isset($_SESSION['cart']))
+	{	
+		$delete = $db->prepare('Delete gcl.* FROM game_cart_lookup AS gcl 
+								JOIN cart AS c ON c.id = gcl.cart_id
+								WHERE c.id=:cart');
+		$delete->bindValue(':cart', $_SESSION['cart'], PDO::PARAM_INT);	
+		$delete->execute();
+					
+		$delete = $db->prepare('DELETE c.* FROM cart AS c
+							   JOIN user AS u ON u.id = c.user_id
+							   WHERE c.id=:cart');
+		$delete->bindValue(':cart', $_SESSION['cart'], PDO::PARAM_INT);	
+		$delete->execute();
+	}
 ?>	
 	
 
